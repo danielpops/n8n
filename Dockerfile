@@ -1,4 +1,10 @@
 FROM ubuntu:noble
-# copy n8n binaries/files from the official image
-COPY --from=n8nio/n8n:latest /usr/local/lib/node_modules/n8n /usr/local/lib/node_modules/n8n
-RUN apt-get update && apt-get install -y nodejs python3 python3-pip
+RUN apt-get update && apt-get install -y curl python3 python3-pip
+
+# Download and install nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+RUN bash -c "source ~/.bashrc && nvm install 22"
+RUN bash -c "npm install n8n -g"
+
+ADD docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
