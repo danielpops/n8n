@@ -13,3 +13,5 @@ RUN bash -c "npm install n8n -g"
 
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
+
+ENTRYPOINT /docker-entrypoint.sh
