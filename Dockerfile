@@ -5,4 +5,5 @@ FROM n8nio/n8n:latest
 USER root
 
 # Install Python 3 and pip using Alpine Linux package manager (apk)
-RUN apk update && apk add --no-cache python3 py3-pip
+RUN apk update
+RUN apk add --no-cache python3 py3-pip
